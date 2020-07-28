@@ -73,6 +73,7 @@ class Spot:                                                                    #
         
     def update_neighbors(self, grid):
         self.neighbors = []
+        
         # Comprobar si la fila actual es menor que el total de filas menos una para añadir una, bajando una fila
         if self.row < self.total_rows - 1 and not grid[self.row + 1][self.col].is_barrier():
             self.neighbors.append(grid[self.row + 1][self.col])
@@ -138,6 +139,7 @@ def algorithm(draw, grid, start, end):                                         #
                 came_from[neighbor] = current
                 g_score[neighbor] = temp_g_score
                 f_score[neighbor] = temp_g_score + h(neighbor.get_pos(), end.get_pos())
+                
                 if neighbor not in open_set_hash:
                     count += 1
                     open_set.put((f_score[neighbor], count, neighbor))
@@ -159,7 +161,7 @@ def make_grid(rows, width):
         grid.append([])
         for j in range(rows):
             spot = Spot(i, j, gap, rows)
-            grid[i].append(spot)                                               # 14. En 'grid' fila 'i' creada en 159, añade el objeto 'spot' creado en 161
+            grid[i].append(spot)                                               # 14. En 'grid' fila 'i' creada en 160, añade el objeto 'spot' creado en 164
             
     return grid
 
@@ -211,6 +213,7 @@ def main(win, width):
                 pos = pygame.mouse.get_pos()
                 row, col = get_clicked_pos(pos, ROWS, width)
                 spot = grid[row][col]
+                
                 if not start and spot != end:                                  # 19. Los '!=' impiden que puedan coincidir los nodos de inicio y final
                     start = spot
                     start.make_start()
@@ -227,6 +230,7 @@ def main(win, width):
                 row, col = get_clicked_pos(pos, ROWS, width)
                 spot = grid[row][col]
                 spot.reset()
+                
                 if spot == start:
                     start = None
                 
