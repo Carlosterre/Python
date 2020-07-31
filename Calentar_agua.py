@@ -1,5 +1,5 @@
 # CALENTAR AGUA
-# Cantidad de energia necesaria para calentar un volumen de agua
+# Calcula la antidad de energia necesaria para calentar un volumen de agua y su precio
 
 ELECTRICITY_PRICE = 0.192699                                                   # Tarifa General 2.0A (19:00 a 20:00) en 2020
 
